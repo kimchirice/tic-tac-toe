@@ -1,5 +1,5 @@
 import React from 'react'
-import { calculateWinner } from '../calculateWinner'
+import calculateWinner  from '../CalculateWinner/calculateWinner'
 import Board  from '../Board/board';
 
 class Game extends React.Component {
