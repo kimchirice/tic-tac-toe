@@ -1,16 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Square from './Square/square'
 
-function Square(props) {
-  return (
-    <button 
-      className='square'
-      onClick={props.onClick}>
-        {props.value}
-    </button>
-  );
-}
+
   
   class Board extends React.Component {
     renderSquare(i) {
@@ -49,11 +42,13 @@ function Square(props) {
     constructor(props) {
       super(props);
       this.state = {
-        history: [{
-          squares: Array(9).fill(null),
-        }],
+        history: [
+          {
+            squares: Array(9).fill(null),
+          }
+        ],
         stepNumber: 0,
-        xIsNext: true,
+        xIsNext: true
       };
     }
 
@@ -66,19 +61,23 @@ function Square(props) {
       }
       squares[i] = this.state.xIsNext ? 'X':'O';
       this.setState({
-        history: history.concat([{
-          squares: squares,
-        }]),
+        history: history.concat([
+          {
+            squares: squares
+          }
+        ]),
         stepNumber: history.length,
-        xIsNext: !this.state.xIsNext,
+        xIsNext: !this.state.xIsNext
       });
     }
 
     jumpTo(step) {
-      this.setState({
-        stempNumber: step,
-        xIsNext: (step % 2 ) === 0,
-      });
+      this.setState(
+        {
+          stempNumber: step,
+          xIsNext: (step % 2 ) === 0,
+        }
+      );
     }
 
     render() {
@@ -125,7 +124,7 @@ function Square(props) {
     document.getElementById('root')
   );
   
-  function calculateWinner (squares) {
+  function calculateWinner(squares) {
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
