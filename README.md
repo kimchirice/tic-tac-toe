@@ -1,5 +1,6 @@
-[Tic Tac Toe]
+##[Tic Tac Toe]
 (https://en.wikipedia.org/wiki/Tic-tac-toe)
+
 A game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.
 
 This project was created for the purpose to learn React JS library, and bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
