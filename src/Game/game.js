@@ -35,6 +35,18 @@ class Game extends React.Component {
       });
     }
 
+    reset() {
+      this.setState({
+        history: [
+          {
+            squares: Array(9).fill(null),
+          }
+        ],
+        stepNumber: 0,
+        xIsNext: true
+      })
+    }
+
     jumpTo(step) {
       this.setState(
         {
@@ -46,14 +58,16 @@ class Game extends React.Component {
 
     render() {
       const history = this.state.history;
+
       const current = history[this.state.stepNumber];
+
       const winner = calculateWinner(current.squares);
 
       const moves = history.map((step, move) => {
         const desc = move ? 'Go to move #' + move : 'Go to game start';
         return (
           <li key={move}>
-            <button onClick={ () => this.jumpTo(move)}>{desc}</button>
+            <button onClick={ () => this.jumpTo(step)}>{desc}</button>
           </li>
         );
       });
@@ -64,6 +78,7 @@ class Game extends React.Component {
       } else {
         status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
       }
+
       return (
         <div className="game">
           <div className="game-board">
@@ -73,6 +88,7 @@ class Game extends React.Component {
             />
           </div>
           <div className="game-info">
+            <div><button onClick={()=> this.reset}>reset</button></div>
             <div>{status}</div>
             <ol>{moves}</ol>
           </div>
